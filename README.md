@@ -7,7 +7,11 @@ testTask is a Java application that interacts with the GitHub API to retrieve an
 - Filter repositories which are not forks
 - Handle exceptions and error responses gracefully
 
-##Usage
+## Table of Contents
+
+[Usage](#usage)
+
+#Usage
 For using the testTask application successfully, create application.properties file with the next information:
 
 server.port={Your port}

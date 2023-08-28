@@ -19,4 +19,4 @@ For using the testTask application successfully, create application.properties f
 If you don't have a PAT, create it and past to application.properties file.
 If you are not able to create a PAT or you don't wanna do it, delete the next row from GitHubRepController:
 - "headers.set("Authorization", "Bearer " + PAT);"
-- Pay attention that without PAT you ability to use application, it means to retrieve user repositories from GitHub API will be limited according to GitHub documentation
+Pay attention that without PAT you ability to use application, it means to retrieve user repositories from GitHub API will be limited according to GitHub documentation

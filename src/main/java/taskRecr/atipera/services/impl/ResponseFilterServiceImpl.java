@@ -3,7 +3,6 @@ package taskRecr.atipera.services.impl;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import taskRecr.atipera.model.Branch;
@@ -21,7 +20,7 @@ public class ResponseFilterServiceImpl implements ResponseFilterService {
         return repositories.stream()
                 .filter(repo -> !repo.isFork())
                 .map(repo -> {
-                    List<BranchInfo> branches = getBranchesForRepo(BASE_URL, repo.getOwner().getLogin(), repo.getName());
+                    var branches = getBranchesForRepo(BASE_URL, repo.getOwner().getLogin(), repo.getName());
                     return new Repository(repo.getName(), repo.isFork(), repo.getOwner(), branches);
                 })
                 .collect(Collectors.toList());
@@ -29,8 +28,8 @@ public class ResponseFilterServiceImpl implements ResponseFilterService {
 
     @Override
     public List<BranchInfo> getBranchesForRepo(String BASE_URL, String username, String repoName) {
-        String url = BASE_URL + "/repos/" + username + "/" + repoName + "/branches";
-        ResponseEntity<List<Branch>> responseEntity = new RestTemplate().exchange(
+        var url = BASE_URL + "/repos/" + username + "/" + repoName + "/branches";
+        var responseEntity = new RestTemplate().exchange(
                 url, HttpMethod.GET, HttpEntity.EMPTY,
                 new ParameterizedTypeReference<List<Branch>>() {}
         );
